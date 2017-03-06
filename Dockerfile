@@ -48,7 +48,8 @@ RUN conda install -y --quiet python=$PYTHON_VERSION && \
   conda install -y --quiet notebook h5py Pillow ipywidgets scikit-learn \
   matplotlib pandas bcolz sympy scikit-image && \
   pip install --upgrade pip && \
-  pip install tensorflow-gpu kaggle-cli xgboost gen-sim && \
+  pip install tensorflow-gpu kaggle-cli \
+  xgboost gen-sim nltk keras_tqdm && \
   pip install git+git://github.com/fchollet/keras.git && \
   conda clean -tipsy
 
