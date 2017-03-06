@@ -48,7 +48,7 @@ RUN conda install -y --quiet python=$PYTHON_VERSION && \
   conda install -y --quiet notebook h5py Pillow ipywidgets scikit-learn \
   matplotlib pandas bcolz sympy scikit-image && \
   pip install --upgrade pip && \
-  pip install tensorflow-gpu kaggle-cli && \
+  pip install tensorflow-gpu kaggle-cli xgboost && \
   pip install git+git://github.com/fchollet/keras.git && \
   conda clean -tipsy
 
@@ -64,6 +64,7 @@ EXPOSE 8888
 RUN wget -A zip,ipynb -r http://www.platform.ai/part2/
 WORKDIR /home/$USERNAME/www.platform.ai/part2/lesson1
 # RUN unzip *.zip
+# RUN for f in *.zip; do unzip $f; done;
 
 ENTRYPOINT ["/tini", "--"]
 CMD jupyter notebook --ip=0.0.0.0 --port=8888
