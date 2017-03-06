@@ -2,9 +2,9 @@ FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu16.04
 
 MAINTAINER Anurag Goel <deeprig@anur.ag>
 
-ARG PYTHON_VERSION=3.0
-ARG CONDA_PYTHON_VERSION=2
-ARG CONDA_VERSION=4.2.12
+ARG PYTHON_VERSION=3.5
+ARG CONDA_PYTHON_VERSION=3
+ARG CONDA_VERSION=4.3.11
 ARG CONDA_DIR=/opt/conda
 ARG TINI_VERSION=v0.13.2
 ARG USERNAME=docker
@@ -63,6 +63,7 @@ EXPOSE 8888
 # Clone fast.ai source
 RUN wget -A zip,ipynb -r http://www.platform.ai/part2/
 WORKDIR /home/$USERNAME/www.platform.ai/part2/lesson1
+# RUN unzip *.zip
 
 ENTRYPOINT ["/tini", "--"]
 CMD jupyter notebook --ip=0.0.0.0 --port=8888
