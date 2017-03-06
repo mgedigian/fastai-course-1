@@ -11,7 +11,7 @@ ARG USERNAME=docker
 ARG USERID=1000
 
 RUN apt-get update && \
-  apt-get install -y --no-install-recommends git wget ffmpeg unzip sudo && \
+  apt-get install -y --no-install-recommends git wget ffmpeg unzip sudo ack-grep && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
@@ -48,7 +48,7 @@ RUN conda install -y --quiet python=$PYTHON_VERSION && \
   conda install -y --quiet notebook h5py Pillow ipywidgets scikit-learn \
   matplotlib pandas bcolz sympy scikit-image && \
   pip install --upgrade pip && \
-  pip install tensorflow-gpu kaggle-cli xgboost && \
+  pip install tensorflow-gpu kaggle-cli xgboost gen-sim && \
   pip install git+git://github.com/fchollet/keras.git && \
   conda clean -tipsy
 
