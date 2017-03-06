@@ -2,7 +2,7 @@ FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu16.04
 
 MAINTAINER Anurag Goel <deeprig@anur.ag>
 
-ARG PYTHON_VERSION=2.7
+ARG PYTHON_VERSION=3.0
 ARG CONDA_PYTHON_VERSION=2
 ARG CONDA_VERSION=4.2.12
 ARG CONDA_DIR=/opt/conda
@@ -61,8 +61,8 @@ ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDA_ROOT/lib64
 EXPOSE 8888
 
 # Clone fast.ai source
-RUN git clone -q https://github.com/fastai/courses.git fastai-courses
-WORKDIR /home/$USERNAME/fastai-courses/deeplearning1/nbs
+RUN wget -A zip,ipynb -r http://www.platform.ai/part2/
+WORKDIR /home/$USERNAME/www.platform.ai/part2/lesson1
 
 ENTRYPOINT ["/tini", "--"]
 CMD jupyter notebook --ip=0.0.0.0 --port=8888
